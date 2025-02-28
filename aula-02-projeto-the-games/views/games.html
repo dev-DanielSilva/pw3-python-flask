@@ -1,39 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Games</title>
-  </head>
-  <body>
-    <h1>Bem-vindo a página de jogos!</h1>
-    <hr />
-    <p>Jogo mais jogado no momento:</p>
-    <ul>
-      {# Exemplo de comentário no jinja2 #}
-      <li>{{titulo}}</li>
-      <li>{{ano}}</li>
-      <li>{{categoria}}</li>
-    </ul>
-    <p>O jogo {{titulo}} tem {{2025 - ano}} anos.</p>
+</head>
+
+<body>
+    <h1>Bem vindo de Games</h1>
+    <h4>Aqui se encontra os melhores jogos</h4>
     <hr>
-    <p>Jogadores online:</p>
+    <button>
+        <a href="/">Ir Home page</a>
+    </button>
+    <hr>
+    <p>Game mais jogado no momento:</p>
+    <!-- Comentário HTML {# {variavel} #}-->
+    {# Exemplo de comentário no jinja2 #}
+
+    <!-- Percorrendo o dicionário com forms -->
+    {% for chave, valor in game.items() %}
+    <details>
+        <summary>{{chave}}</summary>
+        <p> {{valor}} </p>
+    </details>
+    {% endfor %}
+
+    <p>O jogo {{game['Título']}} tem {{2025 - game['Ano']}}.</p>
+    <hr>
+    <p>Estão Jogando no momento:</p>
+
     <ol>
-      {% for jogador in jogadores %}
-      <li>{{jogador}}</li>
-      {% endfor %}
+        {% for jogador in jogadores: %}
+        <li>{{jogador}}</li>
+        {% endfor %}
     </ol>
     <hr>
-    {# Criar uma seção para exibir uma lista de outros jogos sendo jogados no
-    momento. A lista deve possuir 7 games #}
-    <p>Outros jogos:</p>
-    <ul>
-      {% for outrosJogos in jogos %}
-      <li>{{outrosJogos}}</li>
-      {% endfor %}
-    </ul>
-    <hr />
+    <h4>Entrar no jogo:</h4>
+    <form action="{{url_for('games')}}", method="POST">
+        <label for="jogador">Jogador:</label>
+        <input type="text" name="jogador">
+        <input type="submit">
+    </form>
 
-    <a href="/">Ir para página inicial</a>
-  </body>
+    <!-- <hr>
+    <p>Jogos disponiveis::</p>
+    <ol>
+        {% for jogos in games:%}
+        <li>{{jogos}}</li>
+        {% endfor %}
+    </ol>
+    <hr> -->
+</body>
+
 </html>
