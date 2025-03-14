@@ -45,8 +45,10 @@ def init_app(app):
 
         return render_template('games.html',
                                game=game,
-                               jogadores=jogadores
+                               jogadores=jogadores,
+                               gameList=gameList
                                )
+
     @app.route('/cadgames', methods=['GET', 'POST'])
     def cadgames():
         if request.method == "POST":
@@ -57,20 +59,24 @@ def init_app(app):
                                  })
         return render_template('cadgames.html',
                                gameList=gameList)
+
     @app.route('/consoles', methods=['GET', 'POST'])
     def consoles():
         # Acessando o primeiro jogo da lista de jogos
         console = consoleList[0]
         return render_template('consoles.html',
-                               console = console
+                               console=console,
+                               consoleList = consoleList
                                )
+
     @app.route('/cadconsoles', methods=['GET', 'POST'])
     def cadconsoles():
         if request.method == "POST":
             if request.form.get('nome') and request.form.get('valor') and request.form.get('pais'):
                 consoleList.append({'Nome': request.form.get('nome'),
-                                 'Valor': request.form.get('valor'),
-                                 'País': request.form.get('pais')
-                                 })
+                                    'Valor': request.form.get('valor'),
+                                    'País': request.form.get('pais')
+                                    })
         return render_template('cadconsoles.html',
-                               consoleList = consoleList)
+                               consoleList=consoleList,
+                               )

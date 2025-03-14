@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Games</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Bem-vindo a área de consoles</h1>
     <h4>Aqui se encontra os melhores videogames de todos os tempos!</h4>
-    <hr>
+    <hr />
     <button>
-        <a href="/">Ir Home page</a>
+      <a href="/">Ir Home page</a>
     </button>
-    <hr>
+    <hr />
     <p>Console mais vendido do momento:</p>
 
-    {% for chave, valor in console.items() %}
-    {% if chave == 'Valor' %}
+    {% for chave, valor in console.items() %} {% if chave == 'Valor' %}
     <details>
-        <summary>{{ chave }}</summary>
-        <p>R$ {{ valor }}</p>
+      <summary>{{ chave }}</summary>
+      <p>R$ {{ valor }}</p>
     </details>
     {% else %}
     <details>
-        <summary>{{ chave }}</summary>
-        <p>{{ valor }}</p>
+      <summary>{{ chave }}</summary>
+      <p>{{ valor }}</p>
     </details>
-    {% endif %}
-    {% endfor %}
-
+    {% endif %} {% endfor %}
 
     <p>O console {{console['Nome']}} custa R${{console['Valor']}}.</p>
-    <hr>
-
-</body>
-
+    <hr />
+    <p>Consoles Cadastrados:</p>
+    {% for console in consoleList %} Nome: <strong>{{console.Nome}}</strong
+    ><br />
+    Valor: <strong>R${{console.Valor}}</strong><br />
+    País: <strong>{{console.País}}</strong>
+    <br />
+    <br />
+    {% endfor %}
+  </body>
 </html>

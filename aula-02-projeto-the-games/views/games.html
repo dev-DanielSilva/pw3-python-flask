@@ -43,14 +43,13 @@
       <input type="submit" />
     </form>
     <hr />
-    <p>Jogos disponiveis::</p>
-        {% for game in gameList %}
-        Nome: <strong>{{game.Nome}}</strong><br>
-        Ano: <strong>R${{game.Valor}}</strong><br>
-        Categoria: <strong>{{game.País}}</strong>
-        <br>
-        <br>
-        {% endfor %}
+    <p>Jogos disponiveis:</p>
+    {% for game in gameList %} Título: <strong>{{game.Título}}</strong><br />
+    Ano: <strong>{{game.Ano}}</strong><br />
+    Categoria: <strong>{{game.Categoria}}</strong>
+    <br />
+    <br />
+    {% endfor %}
     <hr />
   </body>
 </html>
