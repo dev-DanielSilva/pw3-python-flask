@@ -15,7 +15,7 @@ gameList = [{'Título': 'The Legend of Zelda: Breath of the Wild',
             ]
 consoleList = [{'Nome': 'Wii U',
                'Valor': '1299.99',
-                'País': 'EUA'
+                'País': 'Japão'
                 },
                {'Nome': 'Xbox 360',
                'Valor': '1499.99',
