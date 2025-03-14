@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Games</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Bem-vindo ao The Games</h1>
     <h4>Aqui se encontra os melhores jogos</h4>
-    <hr>
+    <hr />
     <button>
-        <a href="/">Ir Home page</a>
+      <a href="/">Ir Home page</a>
     </button>
-    <hr>
+    <hr />
     <p>Game mais jogado no momento:</p>
     <!-- Comentário HTML {# {variavel} #}-->
     {# Exemplo de comentário no jinja2 #}
@@ -22,36 +21,36 @@
     <!-- Percorrendo o dicionário com forms -->
     {% for chave, valor in game.items() %}
     <details>
-        <summary>{{chave}}</summary>
-        <p> {{valor}} </p>
+      <summary>{{chave}}</summary>
+      <p>{{valor}}</p>
     </details>
     {% endfor %}
 
     <p>O jogo {{game['Título']}} tem {{2025 - game['Ano']}} anos.</p>
-    <hr>
+    <hr />
     <p>Estão Jogando no momento:</p>
 
     <ol>
-        {% for jogador in jogadores: %}
-        <li>{{jogador}}</li>
-        {% endfor %}
+      {% for jogador in jogadores: %}
+      <li>{{jogador}}</li>
+      {% endfor %}
     </ol>
-    <hr>
+    <hr />
     <h4>Entrar no jogo:</h4>
-    <form action="{{url_for('games')}}", method="POST">
-        <label for="jogador">Jogador:</label>
-        <input type="text" name="jogador">
-        <input type="submit">
+    <form action="{{url_for('games')}}" , method="POST">
+      <label for="jogador">Jogador:</label>
+      <input type="text" name="jogador" />
+      <input type="submit" />
     </form>
-
-    <!-- <hr>
+    <hr />
     <p>Jogos disponiveis::</p>
-    <ol>
-        {% for jogos in games:%}
-        <li>{{jogos}}</li>
+        {% for game in gameList %}
+        Nome: <strong>{{game.Nome}}</strong><br>
+        Ano: <strong>R${{game.Valor}}</strong><br>
+        Categoria: <strong>{{game.País}}</strong>
+        <br>
+        <br>
         {% endfor %}
-    </ol>
-    <hr> -->
-</body>
-
+    <hr />
+  </body>
 </html>

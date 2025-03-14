@@ -6,9 +6,19 @@ jogadores = ["MiDna", "davi_lambari",
 gameList = [{'Título': 'The Legend of Zelda: Breath of the Wild',
              'Ano': 2017,
              'Categoria': 'Mundo Aberto'},
+            {'Título': 'Undertale',
+             'Ano': 2016,
+             'Categoria': 'RPG'},
+            {'Título': 'Metal Gear Rising',
+             'Ano': 2013,
+             'Categoria': 'Hack in Slash'}
             ]
 consoleList = [{'Nome': 'Wii U',
                'Valor': '1299.99',
+                'País': 'EUA'
+                },
+               {'Nome': 'Xbox 360',
+               'Valor': '1499.99',
                 'País': 'EUA'
                 }
                ]
