@@ -3,23 +3,37 @@
     <hr>
     <form action="{{url_for('cadconsoles')}}", method="post">
         <label>Nome:</label>
-        <input type="text" name="nome" required></input>
+        <input type="text" name="nome" class="form-control" required></input>
         <label>Valor:</label>
-        <input type="text" name="valor" required></input>
+        <input type="text" name="valor" class="form-control" required></input>
         <label>País</label>
-        <input type="text" name="pais" required></input>
-        <input type="submit" value="Cadastrar"></input>
+        <input type="text" name="pais" class="form-control" required></input>
+        <br>
+        <input type="submit" class="btn btn-success" value="Cadastrar"></input>
     </form>
     <br>
     <hr>
     <h4>Consoles Cadastrados: </h4>
-    {% for console in consoleList %}
-    Nome: <strong>{{console.Nome}}</strong><br>
-    Valor: <strong>R${{console.Valor}}</strong><br>
-    País: <strong>{{console.País}}</strong>
-    <br>
-    <br>
-    {% endfor %}
+    <table
+    class="table table-bordered table-hover"
+>
+    <thead>
+        <tr>
+            <th>Nome:</th>
+            <th>Valor:</th>
+            <th>País de Origem:</th>
+        </thead>
+        <tbody>
+            {% for console in consoleList %}
+            <tr>
+                <td>{{console.Nome}}</td>
+                <td>{{console.Valor}}</td>
+                <td>{{console.País}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </tr>
+    </table>
     <hr>
     <br>
     <a href="/">Voltar para página Inicial</a>
