@@ -1,4 +1,5 @@
 from flask import render_template, request
+from models.database import Game
 
 jogadores = ["MiDna", "davi_lambari",
              "fanylinda", "SuaIrmã", "Iruah"]
@@ -11,7 +12,7 @@ gameList = [{'Título': 'The Legend of Zelda: Breath of the Wild',
              'Categoria': 'RPG'},
             {'Título': 'Metal Gear Rising',
              'Ano': 2013,
-             'Categoria': 'Hack in Slash'}
+             'Categoria': 'Hack and Slash'}
             ]
 consoleList = [{'Nome': 'Wii U',
                'Valor': '1299.99',
@@ -59,6 +60,18 @@ def init_app(app):
                                  })
         return render_template('cadgames.html',
                                gameList=gameList)
+# ROTA DO CRUD (Estoque de Jogos)
+
+    @app.route('/estoque')
+    def estoque():
+        # ORM é uma técnica de programação que facilita a interação
+        # entre aplicações orientadas a objetos e bancos de dados relacionais
+
+        # A ORM que estamos usando é a SQLAlchemy
+        # Método query.all é igual ao SELECT * from
+        gamesEmEstoque = Game.query.all()
+        return render_template('estoque.html',
+                               gamesEmEstoque=gamesEmEstoque)
 
     @app.route('/consoles', methods=['GET', 'POST'])
     def consoles():
@@ -66,7 +79,7 @@ def init_app(app):
         console = consoleList[0]
         return render_template('consoles.html',
                                console=console,
-                               consoleList = consoleList
+                               consoleList=consoleList
                                )
 
     @app.route('/cadconsoles', methods=['GET', 'POST'])
