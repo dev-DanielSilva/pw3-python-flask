@@ -1,5 +1,5 @@
-from flask import render_template, request
-from models.database import Game
+from flask import render_template, request, redirect, url_for
+from models.database import Game, db
 
 jogadores = ["MiDna", "davi_lambari",
              "fanylinda", "SuaIrmã", "Iruah"]
@@ -62,8 +62,27 @@ def init_app(app):
                                gameList=gameList)
 # ROTA DO CRUD (Estoque de Jogos)
 
-    @app.route('/estoque')
-    def estoque():
+    @app.route('/estoque', methods=['GET', 'POST'])
+    @app.route('/estoque/<int:id>')
+    def estoque(id=None):
+        #Se o id for passado, então é para excluir o jogo
+        if id:
+            game = Game.query.get(id)
+            db.session.delete(game)
+            db.session.commit()
+            return redirect(url_for('estoque'))
+        if request.method == 'POST':
+            # Cadastrando o jogo no banco:
+            newGame = Game(
+                request.form['titulo'],
+                request.form['ano'],
+                request.form['categoria'],
+                request.form['plataforma'],
+                request.form['preco']
+            )
+            db.session.add(newGame)
+            db.session.commit()
+            return redirect(url_for('estoque'))
         # ORM é uma técnica de programação que facilita a interação
         # entre aplicações orientadas a objetos e bancos de dados relacionais
 
