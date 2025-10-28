@@ -157,3 +157,6 @@ def init_app(app):
     @app.route('/caduser', methods=['GET', 'POST'])
     def caduser():
         return render_template('caduser.html')
+    @app.route('/galeria', methods=['GET', 'POST'])
+    def galeria():
+        return render_template('galeria.html')
