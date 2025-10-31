@@ -9,34 +9,46 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{url_for('home')}}">The Games</a>
+        <a class="navbar-brand" href="#">The Games</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="{{url_for('home')}}">Início</a>
+              <a class="nav-link" href="{{url_for('home')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('gamesEstoque')}}">CRUD - Jogos</a>
+              <a class="nav-link" href="{{url_for('games')}}">Games</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('consolesEstoque')}}">CRUD - Consoles</a>
+              <a class="nav-link" href="{{url_for('cadgames')}}">Cadastrar games</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('apigames')}}">Catálogo de jogos (API)</a>
+              <a class="nav-link" href="{{url_for('apigames')}}">API de Games</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('login')}}">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('caduser')}}">Cadastro</a>
+              <a class="nav-link" href="{{url_for('estoque')}}">Controle de estoque</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url_for('galeria')}}">Galeria</a>
             </li>
-          </ul>
+            </ul>
+                        
+          <span style="margin-left: auto;">
+            <ul class="navbar-nav">
+              {% if 'user_id' not in session: %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('login')}}">Login</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+              </li>
+              {% endif %}
+            </ul>
+          </span>
+          
         </div>
       </nav>
 
